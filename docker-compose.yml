@@ -1,6 +1,6 @@
 services:
   mc:
-    image: itzg/minecraft-server:java8
+    image: itzg/minecraft-server:latest
     tty: true
     stdin_open: true
     deploy:
@@ -14,17 +14,17 @@ services:
       EULA: "true"
 
       # VANILLA settings
-      #TYPE: VANILLA
-      #VERSION: "1.16.5"
+      TYPE: VANILLA
+      VERSION: "1.21.3"
 
       # FORGE settings
       #TYPE: FORGE
       #VERSION: "1.16.5"
 
       # CURSEFORGE settings
-      TYPE: CURSEFORGE
-      VERSION: "1.16.5"
-      CF_SERVER_MOD: "/modpacks/serverpack9112.zip"
+      #TYPE: CURSEFORGE
+      #VERSION: "1.16.5"
+      #CF_SERVER_MOD: "/modpacks/serverpack9112.zip"
 
       # CURSEFORGE settings (alternative to CF_SERVER_MOD)
       # Allocate from https://console.curseforge.com/ and set in .env file
@@ -37,7 +37,7 @@ services:
 
       # Optional: set to the version you want to install
       INIT_MEMORY: 4G
-      MAX_MEMORY: 6G
+      MAX_MEMORY: 8G
       TZ: America/Santiago
       ENABLE_ROLLING_LOGS: "true"
       EXEC_DIRECTLY: "true"
@@ -49,8 +49,8 @@ services:
       DIFFICULTY: "hard"
       MAX_PLAYERS: "10"
       ENABLE_COMMAND_BLOCK: "true"
-      VIEW_DISTANCE: "6"
-      SIMULATION_DISTANCE: "4"
+      VIEW_DISTANCE: "10"
+      SIMULATION_DISTANCE: "6"
       PVP: "true"
       ALLOW_FLIGHT: "true"
       PLAYER_IDLE_TIMEOUT: "60"
@@ -61,7 +61,7 @@ services:
       # For forge or curseforge, you need to provide the mods and modpacks directories
       #- ./mods:/mods:ro
       # For curseforge, you need to provide the modpacks directory
-      - ./modpacks:/modpacks:ro
+      #- ./modpacks:/modpacks:ro
 
   # Since Docker's default volume driver creates volumes owned by root, this
   # init container will change ownership to match final UID of mc service, above
