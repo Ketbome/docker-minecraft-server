@@ -6,8 +6,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "4.0"    # Elimina esta línea
-          memory: "8G"   # Elimina esta línea
+          cpus: '3.5'    # Dejamos 0.5 CPU para el sistema
+          memory: 0      # Sin límite de memoria
+        reservations:
+          cpus: '2'      # Garantizamos mínimo 2 cores
+          memory: 6G     # Garantizamos mínimo 6GB
     ports:
       - "25565:25565"
     environment:
@@ -54,7 +57,7 @@ services:
       PVP: "true"
       ALLOW_FLIGHT: "true"
       PLAYER_IDLE_TIMEOUT: "60"
-      ONLINE_MODE: "true"
+      ONLINE_MODE: "false"
 
     volumes:
       - ./mc-data:/data
