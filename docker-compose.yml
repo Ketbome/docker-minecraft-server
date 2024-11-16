@@ -3,6 +3,11 @@ services:
     image: itzg/minecraft-server:java8
     tty: true
     stdin_open: true
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"    # Elimina esta línea
+          memory: "8G"   # Elimina esta línea
     ports:
       - "25565:25565"
     environment:
